@@ -1,0 +1,63 @@
+input {
+  width: 100%;
+  max-width: 300px;
+  padding: 6px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input.focus {
+  border-color: #fe074c;
+  box-shadow: 0 0 5px rgba(255, 8, 123, 0.5);
+}
+
+input.success {
+  border-color: #00ff00;
+  box-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+}
+
+/* Container dos alertas */
+div[ngSwitch] {
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo geral para os alertas */
+.alert {
+  padding: 15px 20px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Estilo específico para cada tipo de alerta */
+.alert-primary {
+  background-color: #007bff;
+}
+
+.alert-secondary {
+  background-color: #6c757d;
+}
+
+.alert-success {
+  background-color: #28a745;
+}
+
+.alert-danger {
+  background-color: #dc3545;
+}
+
+/* Efeito hover para os alertas */
+.alert:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}

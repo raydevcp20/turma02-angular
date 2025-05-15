@@ -1,0 +1,104 @@
+<h3>Nova sintaxe</h3>
+<!-- @if, @else if e @else -->
+<h5>Bloco &#64;if, &#64;else if e &#64;else</h5>
+<form>
+  <p>Exemplo:</p>
+  <label for="">Digite sua senha</label>
+  <form>
+    <input type="text" name="password" [(ngModel)]="password" />
+    @if(password.length <= 6){
+      <p>Sua senha deve possuir mais que 6 digitos.</p>
+    } @else if(password.length > 6 && password.length <= 10){
+      <p>Sua senha está no tamanho ideal.</p>
+    } @else {
+      <p>Sua senha está muito grande.</p>
+    }
+  </form>
+</form>
+<br /><br />
+
+<!-- @for -->
+<h5>Bloco &#64;for</h5>
+<div class="listagem">
+  <p>Exemplo de lista 01</p>
+  <ul>
+    <!-- O for diferente do ngFor necessita de uma variável para rastrear o valor do item. 
+     Afim de sua renderização seja feita de forma correta, é ele o 'track item' -->
+    @for (item of itens; track item; let i = $index) { 
+      <li>{{ item }}</li>
+    } @empty {
+      <!-- Caso a lista esteja vazia, é possível utilizar o bloco @empty -->
+      <li>Lista vazia, cadastre um item.</li>
+    }
+  </ul>
+</div>
+<br />
+<div class="listagem">
+  <p>Exemplo de lista 02</p>
+  <ul>
+    <!-- Já para fazer o uso do indice do item, é necessário utilizar 'let i = $index'
+     no final da declaração do bloco for -->
+    @for (item of itens; track item; let i = $index) {
+    <li>{{ item }} - {{ i }}</li>
+    } @empty {
+    <li>Lista vazia, cadastre um item.</li>
+    }
+  </ul>
+</div>
+<br /><br />
+
+
+<!-- @switch -->
+<h5>Bloco &#64;switch</h5>
+<!-- O bloco switch é utilizado para fazer a comparação de valores, 
+    e a partir disso, renderizar o bloco de código que corresponde ao valor, 
+    nesse exemplo 'buttonType'. -->
+<p>
+  Para verificar os exemplos troque o valor da variável 'buttonType' no
+  controller.
+</p>
+@switch (buttonType) { 
+  @case ('success') {
+  <!-- Caso o valor de buttonType seja igual a 'success', 
+        o bloco de código abaixo será renderizado. -->
+    <button class="btn btn-success">Success</button>
+  } 
+  @case ('error') {
+    <!-- Caso o valor de buttonType seja igual a 'error', 
+            o bloco de código abaixo será renderizado. -->
+    <button class="btn btn-danger">Error</button>
+  } 
+  @default {
+    <!-- Caso o valor de buttonType não seja igual a nenhum dos casos acima, 
+            o bloco de código abaixo será renderizado. -->
+    <button class="btn btn-primary">Primary</button>
+  } 
+}
+<br /><br /><br /><br />
+
+
+<!-- @defer -->
+<h5>Bloco &#64;defer</h5>
+<!-- O bloco defer é utilizado para adiar a renderização de um bloco de código, 
+    nesse exemplo, o bloco de código abaixo será renderizado após 3 segundos. -->
+<p> 
+  Para verificar o exemplo, aumente o tempo de espera no decorator '&#64;defer(on timer(3000))' 
+  e recarregue a tela. 
+</p>
+@defer(on timer(3000)) {
+  <p>Renderizado após 3 segundos</p>
+  <app-button color="red"></app-button>
+} @placeholder {
+  <p>Carregado antes de iniciar o carregamento do componente no bloco acima.</p> 
+  <img
+    alt="loading image"
+    src="https://media3.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif?cid=6c09b952b8ar4jhay9j2xfpkmiwem5oubufn5mimhtgxerzc&ep=v1_gifs_search&rid=giphy.gif&ct=g"
+  />
+} @loading {
+  <p> Carregado enquanto o bloco defer é renderizado. </p>
+  <h1>loading component...</h1>
+} @error {
+  <p> Carregado caso ocorra um erro no carregamento do bloco defer. </p>
+  <p>An loading error occurred</p>
+}
+<br/><br/>
